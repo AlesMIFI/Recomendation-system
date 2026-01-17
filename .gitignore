@@ -1,33 +1,18 @@
 
-# Тяжелые файлы (не грузим в Git)
+# исключить только ГИГАНТСКИЕ файлы
+@"
+# Гигантские файлы (>100MB)
+train_dataset_full.csv
+test_dataset_full.csv
+complete_dataset.csv
 train_embeddings.pkl
 test_embeddings.pkl
-ml_models_full_features.pkl
-book_embeddings.pkl
 user_embeddings.pkl
+ml_models_full_features.pkl
 train_features_full.csv
-train_dataset_full.xlsx
-test_dataset_full.xlsx
 
-
-ТОЛЬКО NOTEBOOKS И КОД — БЕЗ ДАННЫХ
-ПОЛНЫЙ СКРИПТ ДЛЯ POWERSHELL:
-
-
-# 2. Создать .gitignore (исключить ВСЕ данные)
-@"
-# ВСЕ CSV файлы
-*.csv
-
-# ВСЕ PKL файлы (модели и embeddings)
-*.pkl
-
-# Catboost логи
+# Catboost
 catboost_info/
-
-# Numpy массивы
-*.npy
-
 
 # Python
 __pycache__/
@@ -36,18 +21,4 @@ __pycache__/
 
 # OS
 .DS_Store
-"@ | Out-File -FilePath ".gitignore" -Encoding UTF8
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-.ipynb_checkpoints/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
+"@ | Out-File -FilePath ".gitignore" -Encoding UTF8 -Force
